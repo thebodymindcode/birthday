@@ -93,6 +93,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-
 
 /* ── HERO RIGHT — savings card ── */
 .hero-savings{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+
+/* HERO DECORATIVE SVG — растительная спираль слева сверху */
+.hero-deco-svg{position:absolute;top:-30px;left:-50px;width:280px;height:280px;opacity:.18;pointer-events:none;z-index:1}
+.hero-deco-svg svg{width:100%;height:100%}
+
+/* HERO BG ORNAMENT — точечный паттерн */
+.hero-dots{position:absolute;bottom:80px;left:30%;width:160px;height:120px;opacity:.5;pointer-events:none;z-index:1}
+.hero-dots svg{width:100%;height:100%}
 .hero-savings::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--sage),var(--gold))}
 .hs-title{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:18px}
 .hs-title::before{content:'';width:24px;height:2px;background:var(--sage)}
@@ -134,11 +142,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-
 .sec-head p strong{color:var(--text);font-weight:700}
 
 /* ── HOW IT WORKS — 3 шага ── */
-.how-wrap{background:var(--bg);padding:48px 32px}
-.how-inner{max-width:1100px;margin:0 auto}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
-.how-grid::before{content:'';position:absolute;top:48px;left:16%;right:16%;height:2px;background:repeating-linear-gradient(90deg,var(--sage) 0 8px,transparent 8px 16px);opacity:.3;z-index:0}
-.how-step{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:26px 24px;position:relative;z-index:1;transition:.3s}
+.how-wrap{background:var(--bg);padding:48px 32px;position:relative;overflow:hidden}
+.how-wrap::before{content:'';position:absolute;top:50%;left:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(59,122,90,.05),transparent 70%);filter:blur(40px);pointer-events:none}
+.how-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+.how-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;position:relative;align-items:stretch}
+.how-arrow{display:flex;align-items:center;justify-content:center;color:var(--sage);opacity:.4;font-size:1.4rem;font-weight:300;position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;z-index:0}
+.how-arrow.a1{left:33%;margin-left:-10px}
+.how-arrow.a2{left:66%;margin-left:-10px}
+.how-arrow svg{width:32px;height:32px;stroke-width:1.5}
+.how-step{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 26px 24px;position:relative;z-index:1;transition:.3s;display:flex;flex-direction:column}
 .how-step:hover{border-color:var(--sage);box-shadow:var(--shadow);transform:translateY(-3px)}
 .how-num{width:36px;height:36px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;margin-bottom:14px;box-shadow:0 4px 12px rgba(59,122,90,.25)}
 .how-step.gold .how-num{background:var(--gold);box-shadow:0 4px 12px rgba(196,154,82,.25)}
@@ -271,25 +283,38 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-
 
 /* ── VIP CARDS — берём из магазина c-vip ── */
 .vip-wrap{max-width:1280px;margin:0 auto;padding:0 32px 48px}
+
+/* VIP DECORATIVE — золотая корона на круге */
+.vip-decoration{display:flex;justify-content:center;margin-bottom:28px}
+.vip-deco-circle{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#FFFDF7,#FFF6E0);border:2px solid rgba(196,154,82,.4);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 8px 32px rgba(196,154,82,.18)}
+.vip-deco-circle::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(196,154,82,.3);animation:vipRotate 30s linear infinite}
+@keyframes vipRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.vip-deco-circle svg{width:42px;height:42px;color:var(--gold);position:relative;z-index:2}
 .vip-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* ── VIP CARDS — премиальный плоский стиль магазина ── */
 .vip-card{background:linear-gradient(180deg,#FFFDF7 0%,#FFF9EE 100%);border:2px solid rgba(196,154,82,.3);border-radius:20px;padding:0;position:relative;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
 .vip-card:hover{border-color:#C49A52;box-shadow:0 8px 40px rgba(196,154,82,.18),0 20px 48px rgba(0,0,0,.08);transform:translateY(-3px)}
 .vip-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#C49A52,#D4AF6E,#E8C97A,#D4AF6E,#C49A52);background-size:200% 100%;animation:goldShimmer 3s ease infinite;z-index:1}
-.vip-crown{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,#C49A52,#D4AF6E);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 12px rgba(196,154,82,.3);z-index:2}
-.vip-head{padding:46px 28px 22px}
-.vip-head h3{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.vip-icon{font-size:1.4rem}
-.vip-head .card-desc{font-size:.86rem;color:var(--text2);line-height:1.55;margin-bottom:18px}
-.vip-features{padding:0 28px 22px}
+
+/* Бейдж — компактный, плоский, как в магазине */
+.vip-crown{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:6px;background:rgba(196,154,82,.12);color:#C49A52;font-size:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;z-index:2;line-height:1.4;white-space:nowrap}
+.vip-crown svg{width:11px;height:11px;flex-shrink:0}
+
+.vip-head{padding:24px 28px 18px}
+.vip-head h3{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;display:flex;align-items:center;gap:10px;line-height:1.2;padding-right:120px}
+.vip-icon{font-size:1.3rem;flex-shrink:0}
+.vip-head .card-desc{font-size:.86rem;color:var(--text2);line-height:1.55;margin-bottom:0}
+.vip-features{padding:14px 28px 18px}
 .vip-feat{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:rgba(196,154,82,.06);border-radius:10px;margin-bottom:8px}
+.vip-feat:last-child{margin-bottom:0}
 .vip-feat svg{width:16px;height:16px;color:#C49A52;flex-shrink:0;margin-top:1px}
-.vip-feat-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.vip-feat-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:2px;line-height:1.3}
 .vip-feat-desc{font-size:.72rem;color:var(--text2);line-height:1.5}
-.vip-foot{padding:18px 28px 28px;margin-top:auto;background:linear-gradient(180deg,transparent,rgba(196,154,82,.06) 100%);border-top:1px solid rgba(196,154,82,.2)}
-.vip-spots{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:6px;background:rgba(196,154,82,.14);color:var(--gold);font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.vip-foot{padding:20px 28px 24px;margin-top:auto;background:linear-gradient(180deg,transparent,rgba(196,154,82,.06) 100%);border-top:1px solid rgba(196,154,82,.2)}
+.vip-spots{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:6px;background:rgba(196,154,82,.14);color:var(--gold);font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;line-height:1.4}
 .vip-spots.solid{background:var(--gold);color:#fff}
 .vip-spots svg{width:12px;height:12px}
-.vip-price-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.vip-price-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;gap:10px}
 .vip-price-old{font-size:.92rem;color:var(--text3);text-decoration:line-through;font-weight:500}
 .vip-price-new{font-size:1.8rem;font-weight:800;letter-spacing:-.03em;color:var(--gold);line-height:1}
 .vip-price-new small{font-size:.85rem;font-weight:500;color:var(--text3)}
@@ -397,10 +422,14 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
   .auth-grid{grid-template-columns:1fr}
   .results-grid{grid-template-columns:repeat(2,1fr)}
   .how-grid{grid-template-columns:1fr;gap:14px}
-  .how-grid::before{display:none}
+  .how-arrow{display:none}
   .brain-info{grid-template-columns:1fr;gap:24px;padding:28px}
   .brain-svg-container{order:-1}
   .brain-svg-container svg{max-width:280px}
+  .hero-deco-svg{width:200px;height:200px;top:-20px;left:-60px;opacity:.12}
+  .hero-dots{display:none}
+  .vip-head h3{padding-right:90px;font-size:1.2rem}
+  .vip-crown{font-size:.58rem;padding:5px 10px;letter-spacing:.05em}
 }
 @media(max-width:640px){
   .nav-c{padding:0 20px;height:54px}
@@ -438,9 +467,13 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
   .fl-left,.fl-right{padding:28px 22px}
   .fl-prods{grid-template-columns:1fr}
   .fl-price{font-size:2.2rem}
-  .vip-head{padding:42px 22px 18px}
-  .vip-features{padding:0 22px 18px}
-  .vip-foot{padding:14px 22px 22px}
+  .vip-head{padding:48px 22px 16px}
+  .vip-head h3{font-size:1.15rem;padding-right:0}
+  .vip-features{padding:12px 22px 16px}
+  .vip-foot{padding:16px 22px 22px}
+  .vip-crown{top:14px;right:14px;font-size:.55rem;padding:4px 9px;letter-spacing:.05em}
+  .vip-crown svg{width:9px;height:9px}
+  .vip-price-new{font-size:1.5rem}
   .science-strip{padding:36px 20px}
   .brain-info{padding:22px}
   .brain-info-text h3{font-size:1.1rem}
@@ -452,6 +485,8 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
   .final-cta{padding:48px 20px}
   .fc-buttons{flex-direction:column}
   .fc-btn-primary,.fc-btn-secondary{width:100%;justify-content:center}
+  .vip-deco-circle{width:72px;height:72px}
+  .vip-deco-circle svg{width:34px;height:34px}
 }
 </style>
 </head>
@@ -488,6 +523,42 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
 <div class="hero-wrap" id="top">
 <div class="hero-deco-1"></div>
 <div class="hero-deco-2"></div>
+
+<!-- DECORATIVE: spiral leaf growth — top left -->
+<div class="hero-deco-svg">
+  <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#3B7A5A" stroke-width="1.5" stroke-linecap="round">
+    <!-- Spiral -->
+    <path d="M140 140 m-60 0 a60 60 0 1 0 120 0 a60 60 0 1 0 -120 0" opacity=".25"/>
+    <path d="M140 140 m-90 0 a90 90 0 1 0 180 0 a90 90 0 1 0 -180 0" opacity=".15"/>
+    <path d="M140 140 m-120 0 a120 120 0 1 0 240 0 a120 120 0 1 0 -240 0" opacity=".08"/>
+    <!-- Growing branch -->
+    <path d="M140 220 Q 140 180 130 150 Q 120 120 140 90 Q 160 60 140 30" stroke-width="2"/>
+    <!-- Leaves -->
+    <path d="M130 150 Q 110 145 100 130 Q 110 135 130 150" fill="#3B7A5A" opacity=".4"/>
+    <path d="M140 90 Q 165 95 175 75 Q 160 80 140 90" fill="#3B7A5A" opacity=".4"/>
+    <path d="M135 200 Q 115 195 105 180 Q 120 188 135 200" fill="#3B7A5A" opacity=".4"/>
+    <!-- Top circle -->
+    <circle cx="140" cy="30" r="6" fill="#C49A52"/>
+    <!-- Side dots -->
+    <circle cx="100" cy="130" r="3" fill="#3B7A5A"/>
+    <circle cx="175" cy="75" r="3" fill="#3B7A5A"/>
+    <circle cx="105" cy="180" r="2.5" fill="#C49A52"/>
+  </svg>
+</div>
+
+<!-- DECORATIVE DOTS PATTERN -->
+<div class="hero-dots">
+  <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#3B7A5A" opacity=".25">
+      <circle cx="10" cy="10" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="50" cy="10" r="2"/><circle cx="70" cy="10" r="2"/><circle cx="90" cy="10" r="2"/><circle cx="110" cy="10" r="2"/><circle cx="130" cy="10" r="2"/><circle cx="150" cy="10" r="2"/>
+      <circle cx="10" cy="30" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="50" cy="30" r="2"/><circle cx="70" cy="30" r="2"/><circle cx="90" cy="30" r="2"/><circle cx="110" cy="30" r="2"/><circle cx="130" cy="30" r="2"/><circle cx="150" cy="30" r="2"/>
+      <circle cx="10" cy="50" r="2"/><circle cx="30" cy="50" r="2"/><circle cx="50" cy="50" r="2"/><circle cx="70" cy="50" r="2"/><circle cx="90" cy="50" r="2"/><circle cx="110" cy="50" r="2"/><circle cx="130" cy="50" r="2"/><circle cx="150" cy="50" r="2"/>
+      <circle cx="10" cy="70" r="2"/><circle cx="30" cy="70" r="2"/><circle cx="50" cy="70" r="2"/><circle cx="70" cy="70" r="2"/><circle cx="90" cy="70" r="2"/><circle cx="110" cy="70" r="2"/><circle cx="130" cy="70" r="2"/><circle cx="150" cy="70" r="2"/>
+      <circle cx="10" cy="90" r="2"/><circle cx="30" cy="90" r="2"/><circle cx="50" cy="90" r="2"/><circle cx="70" cy="90" r="2"/><circle cx="90" cy="90" r="2"/><circle cx="110" cy="90" r="2"/><circle cx="130" cy="90" r="2"/><circle cx="150" cy="90" r="2"/>
+    </g>
+  </svg>
+</div>
+
 <section class="hero">
   <div class="hero-left reveal">
     <div class="hero-tag">
@@ -603,6 +674,14 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
     </div>
 
     <div class="how-grid">
+      <!-- Стрелки между шагами -->
+      <div class="how-arrow a1">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16h20M20 10l6 6-6 6"/></svg>
+      </div>
+      <div class="how-arrow a2">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16h20M20 10l6 6-6 6"/></svg>
+      </div>
+
       <div class="how-step reveal">
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         <div class="how-num">1</div>
@@ -627,7 +706,6 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
   </div>
 </section>
 
-<!-- ═══ BLOCKS — 6 базовых ═══ -->
 <section class="sec" id="blocks">
   <div class="sec-head reveal">
     <div class="sec-tag">7 блоков · максимальная скидка</div>
@@ -1085,6 +1163,13 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
 
 <!-- ═══ VIP ═══ -->
 <div class="vip-wrap" id="vip">
+  <div class="vip-decoration reveal">
+    <div class="vip-deco-circle">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/>
+      </svg>
+    </div>
+  </div>
   <div class="sec-head reveal">
     <div class="sec-tag" style="color:var(--gold)">VIP · ограниченные лоты</div>
     <h2>Только <span class="gold">в этом году.</span></h2>
@@ -1144,7 +1229,7 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
     <article class="vip-card reveal d2" style="border-color:#C49A52;border-width:2px">
       <div class="vip-crown">
         <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 1L9 5L13 5.5L10 8.5L11 12.5L7 10.5L3 12.5L4 8.5L1 5.5L5 5L7 1z"/></svg>
-        Лот B · 1 место · уникальное
+        Лот B · 1 место
       </div>
       <div class="vip-head">
         <h3><span class="vip-icon">👑</span>VIP-сопровождение</h3>
