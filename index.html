@@ -2,16 +2,24 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="theme-color" content="#3B7A5A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
 <title>День рождения проекта · 8 мая | Архитектура сознания</title>
 <meta name="description" content="Раз в году. Блоки программ со скидкой до 50%. 8-10 мая 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden;font-size:16px}
-body{overflow-x:hidden;word-wrap:break-word;overflow-wrap:break-word;font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden;width:100%;max-width:100vw;word-wrap:break-word;overflow-wrap:break-word;font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* iPhone Safari fix — touch targets минимум 44x44 */
+button,a{touch-action:manipulation}
+input,textarea{font-size:16px}/* предотвращает zoom на iOS */
 
 /* ── PALETTE — взято из магазина 1:1 ── */
 :root{
@@ -347,7 +355,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-
 .brain-list-item b{color:var(--sage);font-weight:700}
 
 .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-.r-card{background:var(--white);border-radius:16px;padding:24px 22px;text-align:center;border:1px solid var(--border);transition:.3s}
+.r-card{background:var(--white);border-radius:16px;padding:24px 22px;text-align:center;border:1px solid var(--border);transition:.3s;display:flex;flex-direction:column}
+.r-card .r-icon{flex-shrink:0;margin-left:auto;margin-right:auto}
+.r-card .r-bar{margin-top:auto}
 .r-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .r-icon{width:44px;height:44px;border-radius:12px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
 .r-icon svg{width:20px;height:20px;color:var(--sage)}
@@ -451,6 +461,7 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}.d5{transition-delay:.3s}.d6{transition-delay:.36s}
 
 /* ── RESPONSIVE ── */
+/* ── TABLET 1024px ── */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;gap:32px;padding:40px 24px 24px}
   .b-grid{grid-template-columns:1fr;gap:14px}
@@ -470,69 +481,265 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center;backgro
   .vip-crown{font-size:.58rem;padding:5px 10px;letter-spacing:.05em}
   .gifts-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:640px){
-  .nav-c{padding:0 20px;height:54px}
+
+/* ── MOBILE 768px ── */
+@media(max-width:768px){
+  /* Глобально: запрет горизонтального скролла */
+  html,body{overflow-x:hidden;width:100%;max-width:100vw}
+  
+  /* Nav */
+  .nav-c{padding:0 16px;height:52px}
   .nav-r a:not(.cta){display:none}
-  .cd-strip{padding:9px 16px}
-  .cd-content{gap:12px}
-  .cd-blocks{gap:5px}
-  .cd-b{padding:4px 9px;min-width:38px}
-  .cd-b b{font-size:.9rem}
-  .cd-pulse{font-size:.62rem}
-  .hero{padding:28px 20px 20px}
-  .hero h1{font-size:1.5rem}
-  .hero-stats-bar{grid-template-columns:1fr 1fr 1fr;gap:8px}
-  .hsb{padding:10px 12px}
-  .hsb b{font-size:1.15rem}
-  .hsb i{font-size:.6rem}
-  .hero-savings{padding:22px}
-  .hs-cmp-num{font-size:1.3rem}
-  .hs-cmp-num.old{font-size:1rem}
-  .trust-bar{padding:0 20px 24px}
-  .trust-pill{font-size:.66rem;padding:6px 12px}
-  .sec{padding:32px 20px}
-  .how-wrap{padding:32px 20px}
-  .how-step{padding:22px 20px}
-  .card-illust{width:48px;height:48px;top:10px;right:10px}
-  .card-head{padding:22px 20px 18px}
-  .card-foot{padding:18px 20px 22px}
-  .card h3{font-size:1.2rem;padding-right:36px}
+  .nav-r .cta{padding:8px 16px;font-size:.78rem}
+  .brand{font-size:.85rem}
+  .brand b{display:none}
+  
+  /* Countdown */
+  .cd-strip{padding:8px 12px}
+  .cd-content{gap:10px;flex-wrap:wrap;justify-content:center}
+  .cd-blocks{gap:4px}
+  .cd-b{padding:4px 8px;min-width:36px}
+  .cd-b b{font-size:.88rem}
+  .cd-b small{font-size:.5rem}
+  .cd-pulse{font-size:.6rem;letter-spacing:.05em}
+  
+  /* Hero */
+  .hero{padding:28px 16px 20px;gap:24px}
+  .hero h1{font-size:clamp(1.4rem,7vw,1.9rem);line-height:1.15}
+  .hero h1 .nowrap{white-space:normal}
+  .hero-tag{font-size:.62rem;padding:6px 12px;letter-spacing:.06em;margin-bottom:14px}
+  .hero-sub{font-size:.92rem;line-height:1.6;margin-bottom:20px}
+  .hero-stats-bar{grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:20px}
+  .hsb{padding:10px 8px;border-radius:10px}
+  .hsb b{font-size:1.1rem}
+  .hsb b small{font-size:.7rem}
+  .hsb i{font-size:.55rem;letter-spacing:.04em}
+  .hero-ctas{gap:8px;flex-direction:column;width:100%}
+  .hero-btn-primary,.hero-btn-secondary{width:100%;justify-content:center;padding:14px 20px;font-size:.85rem}
+  
+  /* Hero savings card */
+  .hero-savings{padding:20px 16px;border-radius:16px}
+  .hs-title{font-size:.62rem;letter-spacing:.08em;margin-bottom:14px}
+  .hs-compare{flex-direction:row;gap:8px;align-items:flex-start;margin-bottom:16px;padding-bottom:16px}
+  .hs-cmp-label{font-size:.55rem}
+  .hs-cmp-num{font-size:1.2rem}
+  .hs-cmp-num.old{font-size:.95rem}
+  .hs-cmp-arrow{display:none}
+  .hs-row{padding:9px 11px}
+  .hs-name{font-size:.72rem;gap:6px}
+  .hs-name svg{width:12px;height:12px}
+  .hs-disc{font-size:.64rem}
+  
+  /* Hero deco */
+  .hero-deco-svg{width:160px;height:160px;top:-30px;left:-50px;opacity:.1}
+  .hero-blob.b1,.hero-deco-1{width:300px;height:300px;top:-100px;right:-100px}
+  .hero-blob.b2,.hero-deco-2{width:300px;height:300px}
+  
+  /* Trust pills */
+  .trust-bar{padding:0 16px 24px;gap:6px}
+  .trust-pill{font-size:.62rem;padding:5px 10px;gap:5px}
+  .trust-pill svg{width:11px;height:11px}
+  
+  /* Sections */
+  .sec{padding:36px 16px}
+  .sec-head{margin-bottom:28px}
+  .sec-head h2{font-size:clamp(1.35rem,5.5vw,1.7rem);line-height:1.2}
+  .sec-head p{font-size:.88rem;line-height:1.55}
+  .sec-tag{font-size:.6rem;letter-spacing:.12em;margin-bottom:10px}
+  .sec-tag::before,.sec-tag::after{width:18px}
+  
+  /* How */
+  .how-wrap{padding:36px 16px}
+  .how-step{padding:20px 18px}
+  .how-icon{width:24px;height:24px;top:18px;right:18px}
+  .how-num{width:32px;height:32px;font-size:.85rem;margin-bottom:12px}
+  .how-step h4{font-size:1rem}
+  .how-step p{font-size:.82rem;line-height:1.5}
+  
+  /* Block cards */
+  .card-illust{width:44px;height:44px;top:10px;right:10px}
+  .card-head{padding:20px 18px 16px}
+  .card-foot{padding:16px 18px 20px}
+  .card-badge{font-size:.55rem;padding:4px 9px;margin-bottom:12px;letter-spacing:.06em}
+  .card-badge svg{width:10px;height:10px}
+  .card h3{font-size:1.1rem;padding-right:50px;line-height:1.25;margin-bottom:6px}
+  .card-desc{font-size:.82rem;line-height:1.5;margin-bottom:14px}
+  .save-bar{padding:8px 11px;margin-bottom:14px}
+  .save-bar svg{width:14px;height:14px}
+  .save-bar-text{font-size:.72rem}
+  .info-row{gap:5px;margin-bottom:14px}
+  .info-chip{font-size:.65rem;padding:4px 9px;gap:4px}
+  .info-chip svg{width:10px;height:10px}
+  .includes li{font-size:.78rem;padding:5px 0;gap:7px}
+  .includes li svg{width:14px;height:14px}
+  .includes li .li-link{font-size:.66rem}
+  .price-old{font-size:.82rem}
   .price-new{font-size:1.5rem}
-  .bmap-wrap{padding:16px 20px}
-  .bmap{padding:24px 20px}
-  .bmap-svg-wrap{overflow-x:auto}
+  .price-new small{font-size:.78rem}
+  .btn-primary{padding:12px;font-size:.78rem}
+  
+  /* Blocks Map */
+  .bmap-wrap{padding:14px 16px}
+  .bmap{padding:24px 18px}
+  .bmap-head{margin-bottom:24px}
+  .bmap-head h3{font-size:1.2rem;line-height:1.25}
+  .bmap-head p{font-size:.82rem}
+  .bmap-svg-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .bmap-svg{min-width:600px}
-  .flagship-wrap,.vip-wrap{padding:0 20px 32px}
-  .fl-left,.fl-right{padding:28px 22px}
-  .fl-prods{grid-template-columns:1fr}
+  .bmap-legend{font-size:.62rem}
+  .bmap-leg{font-size:.66rem}
+  
+  /* Flagship */
+  .flagship-wrap{padding:0 16px 32px}
+  .flagship{border-radius:16px}
+  .flagship-crown{top:12px;right:12px;font-size:.56rem;padding:5px 11px;letter-spacing:.06em}
+  .flagship-crown svg{width:10px;height:10px}
+  .fl-left{padding:32px 22px 24px}
+  .fl-right{padding:28px 22px;border-left:none;border-top:1px solid rgba(196,154,82,.2)}
+  .fl-tag{font-size:.6rem;letter-spacing:.1em;margin-bottom:10px}
+  .fl-left h3{font-size:1.4rem}
+  .fl-desc{font-size:.85rem;margin-bottom:18px}
+  .fl-prods{grid-template-columns:1fr;gap:5px;margin-bottom:18px}
+  .fl-prod{padding:8px 11px;font-size:.74rem}
+  .fl-prod svg{width:12px;height:12px}
+  .fl-savings-bar{padding:9px 12px}
+  .fl-savings-bar-text{font-size:.78rem}
+  .fl-old{font-size:.9rem}
   .fl-price{font-size:2.2rem}
-  .vip-head{padding:48px 22px 16px}
-  .vip-head h3{font-size:1.15rem;padding-right:0}
-  .vip-features{padding:12px 22px 16px}
-  .vip-foot{padding:16px 22px 22px}
-  .vip-crown{top:14px;right:14px;font-size:.55rem;padding:4px 9px;letter-spacing:.05em}
-  .vip-crown svg{width:9px;height:9px}
+  .fl-price small{font-size:1rem}
+  .fl-save-pill{font-size:.66rem;padding:4px 12px}
+  .fl-btn{padding:14px 24px;font-size:.85rem}
+  .fl-bonus{font-size:.7rem}
+  
+  /* VIP */
+  .vip-wrap{padding:0 16px 32px}
+  .vip-decoration{margin-bottom:24px}
+  .vip-deco-circle{width:64px;height:64px}
+  .vip-deco-circle svg{width:30px;height:30px}
+  .vip-card{border-radius:16px}
+  .vip-head{padding:46px 20px 14px}
+  .vip-head h3{font-size:1.1rem;padding-right:0;gap:8px}
+  .vip-icon{font-size:1.1rem}
+  .vip-features{padding:10px 20px 14px}
+  .vip-feat{padding:9px 11px;gap:8px}
+  .vip-feat svg{width:14px;height:14px}
+  .vip-feat-title{font-size:.76rem}
+  .vip-feat-desc{font-size:.68rem}
+  .vip-foot{padding:14px 20px 20px}
+  .vip-crown{top:12px;right:12px;font-size:.52rem;padding:4px 8px;letter-spacing:.04em;gap:4px}
+  .vip-crown svg{width:8px;height:8px}
+  .vip-spots{font-size:.6rem;padding:3px 9px;letter-spacing:.04em}
+  .vip-spots svg{width:10px;height:10px}
+  .vip-price-old{font-size:.82rem}
   .vip-price-new{font-size:1.5rem}
-  .science-strip{padding:36px 20px}
-  .brain-info{padding:22px}
-  .brain-info-text h3{font-size:1.1rem}
-  .results-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .r-card{padding:18px 14px}
-  .r-val{font-size:1.4rem}
-  .auth-card{padding:24px 22px}
-  .bday-connector{flex-direction:column;gap:14px;padding:20px}
+  .vip-btn{padding:12px;font-size:.78rem}
+  
+  /* Science */
+  .science-strip{padding:36px 16px}
+  .brain-info{padding:20px;border-radius:16px;gap:20px}
+  .brain-info-text h3{font-size:1.1rem;line-height:1.3}
+  .brain-info-text p{font-size:.82rem;line-height:1.55}
+  .brain-list-item{padding:9px 11px;font-size:.74rem;gap:8px}
+  .brain-list-item svg{width:14px;height:14px}
+  .results-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .r-card{padding:16px 12px;border-radius:12px}
+  .r-icon{width:36px;height:36px;margin-bottom:10px}
+  .r-icon svg{width:18px;height:18px}
+  .r-val{font-size:1.3rem}
+  .r-val small{font-size:.85rem}
+  .r-label{font-size:.66rem;line-height:1.4}
+  .r-sources{font-size:.62rem}
+  
+  /* Authors */
+  .auth-grid{gap:14px}
+  .auth-card{padding:22px 20px;border-radius:16px}
+  .auth-meta{gap:12px;margin-bottom:14px}
+  .auth-avatar{width:48px;height:48px;font-size:1.2rem}
+  .auth-name{font-size:1.05rem}
+  .auth-role{font-size:.62rem;letter-spacing:.06em}
+  .auth-stats{gap:14px;margin-bottom:14px;padding-bottom:14px}
+  .auth-stat b{font-size:1rem}
+  .auth-stat small{font-size:.58rem;letter-spacing:.03em}
+  .auth-tags{gap:5px;margin-bottom:14px;padding-bottom:14px}
+  .auth-tag{font-size:.66rem;padding:4px 9px}
+  .auth-bio{font-size:.78rem;line-height:1.55}
+  
+  /* Birthday connector */
+  .bday-connector{flex-direction:column;gap:12px;padding:20px;margin-bottom:24px}
   .bday-side{max-width:none;width:100%}
-  .bday-middle svg{transform:rotate(90deg);width:60px;height:50px}
-  .bday-middle-label{font-size:.6rem}
-  .faq-section{padding:32px 20px}
-  .final-cta{padding:56px 20px;margin-top:24px}
+  .bday-name{font-size:.85rem}
+  .bday-date{font-size:1.2rem}
+  .bday-middle svg{transform:rotate(90deg);width:54px;height:46px}
+  .bday-middle-label{font-size:.56rem;letter-spacing:.04em;max-width:160px}
+  
+  /* FAQ */
+  .faq-section{padding:36px 16px}
+  .fq-q{padding:14px 0;font-size:.85rem}
+  .fq-q svg{width:16px;height:16px}
+  .fq-a p{font-size:.8rem;line-height:1.55;padding-bottom:14px}
+  
+  /* Gifts */
+  .gifts-section{padding:36px 16px}
+  .gifts-grid{grid-template-columns:1fr;gap:10px}
+  .gift-card{padding:20px 18px;border-radius:14px}
+  .gift-icon{width:52px;height:52px;margin-bottom:12px}
+  .gift-icon svg{width:22px;height:22px}
+  .gift-title{font-size:.92rem}
+  .gift-desc{font-size:.78rem;line-height:1.5}
+  
+  /* Final CTA */
+  .final-cta{padding:48px 20px;margin-top:24px}
+  .fc-tag{font-size:.62rem;letter-spacing:.12em;margin-bottom:12px}
+  .fc-tag::before,.fc-tag::after{width:18px}
+  .fc-content h2{font-size:clamp(1.45rem,5.5vw,1.9rem);line-height:1.2;margin-bottom:12px}
+  .fc-content p{font-size:.88rem;line-height:1.6;margin-bottom:24px}
   .fc-buttons{flex-direction:column;gap:10px}
-  .fc-btn-primary,.fc-btn-secondary{width:100%;justify-content:center}
-  .vip-deco-circle{width:72px;height:72px}
-  .vip-deco-circle svg{width:34px;height:34px}
-  .gifts-section{padding:32px 20px}
-  .gifts-grid{grid-template-columns:1fr;gap:12px}
-  .gift-card{padding:22px 18px}
+  .fc-btn-primary,.fc-btn-secondary{width:100%;justify-content:center;padding:14px 20px;font-size:.85rem}
+  
+  /* Footer */
+  footer{padding:24px 16px}
+  .ft-links{gap:14px;flex-wrap:wrap}
+  .ft-links a{font-size:.74rem}
+  .ft-copy{font-size:.62rem;line-height:1.5}
+}
+
+/* ── ULTRA-NARROW iPhone SE 375px ── */
+@media(max-width:380px){
+  .nav-c{padding:0 12px}
+  .brand{font-size:.78rem}
+  .nav-r .cta{padding:7px 12px;font-size:.72rem}
+  .cd-content{gap:8px}
+  .cd-b{min-width:32px;padding:3px 6px}
+  .cd-b b{font-size:.78rem}
+  .hero{padding:24px 14px 18px}
+  .hero h1{font-size:1.35rem}
+  .hero-stats-bar{gap:5px}
+  .hsb{padding:8px 6px}
+  .hsb b{font-size:1rem}
+  .hero-savings{padding:18px 14px}
+  .hs-row{padding:8px 10px}
+  .hs-name{font-size:.68rem}
+  .hs-disc{font-size:.6rem}
+  .trust-bar{padding:0 14px 20px}
+  .trust-pill{font-size:.58rem;padding:5px 9px}
+  .sec{padding:32px 14px}
+  .how-wrap,.faq-section,.science-strip,.gifts-section,.final-cta{padding-left:14px;padding-right:14px}
+  .flagship-wrap,.vip-wrap,.bmap-wrap{padding-left:14px;padding-right:14px}
+  .card-head{padding:18px 16px 14px}
+  .card-foot{padding:14px 16px 18px}
+  .card h3{font-size:1.05rem;padding-right:46px}
+  .card-illust{width:38px;height:38px}
+  .fl-left,.fl-right{padding:24px 18px}
+  .vip-head{padding:42px 18px 12px}
+  .vip-features{padding:8px 18px 12px}
+  .vip-foot{padding:12px 18px 18px}
+  .auth-card{padding:20px 18px}
+  .gift-card{padding:18px 16px}
+}
+
+/* ── Старый универсальный mobile fallback ── */
+@media(max-width:640px){
+  .nav-r a:not(.cta){display:none}
 }
 </style>
 </head>
