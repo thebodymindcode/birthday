@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -71,15 +70,17 @@ h1 .gold{color:var(--gold)}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 .divider svg{width:18px;height:18px;color:var(--gold);opacity:.6}
 
-/* Карточка с датой */
-.next-sale{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 32px;margin-bottom:32px;text-align:left;display:flex;align-items:center;gap:20px;box-shadow:var(--shadow);transition:.3s}
-.next-sale:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+/* Карточка с подпиской на ТГ */
+.next-sale{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:24px 28px;margin-bottom:32px;text-align:left;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow);transition:.3s;text-decoration:none;color:inherit;cursor:pointer}
+.next-sale:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);border-color:var(--sage)}
+.next-sale:hover .ns-arrow{transform:translateX(4px);color:var(--sage)}
 .ns-icon{width:52px;height:52px;border-radius:14px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ns-icon svg{width:24px;height:24px;color:var(--sage)}
-.ns-text{flex:1}
+.ns-text{flex:1;min-width:0}
 .ns-label{font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.ns-date{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1.25}
+.ns-date{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;color:var(--text);line-height:1.3}
 .ns-date span{color:var(--sage)}
+.ns-arrow{width:18px;height:18px;color:var(--text3);flex-shrink:0;transition:.25s}
 
 /* Кнопки */
 .btns{display:flex;flex-direction:column;gap:10px;align-items:center}
@@ -103,11 +104,12 @@ h1 .gold{color:var(--gold)}
   .tag{font-size:.58rem;padding:6px 14px;letter-spacing:.12em}
   h1{font-size:1.7rem}
   .subtitle{font-size:.95rem;margin-bottom:28px}
-  .next-sale{padding:20px 22px;gap:14px;border-radius:16px;margin-bottom:24px}
+  .next-sale{padding:18px 20px;gap:14px;border-radius:16px;margin-bottom:24px}
   .ns-icon{width:44px;height:44px;border-radius:12px}
   .ns-icon svg{width:20px;height:20px}
-  .ns-label{font-size:.6rem}
-  .ns-date{font-size:1rem}
+  .ns-label{font-size:.58rem;letter-spacing:.1em}
+  .ns-date{font-size:.92rem}
+  .ns-arrow{width:14px;height:14px}
   .btn-primary{width:100%;min-width:0;padding:14px 20px}
   .btn-secondary{width:100%;justify-content:center}
   .footer-note{font-size:.72rem;margin-top:32px}
@@ -149,29 +151,24 @@ h1 .gold{color:var(--gold)}
   <h1>Спасибо <span class="sage">всем,</span><br>кто был с&nbsp;нами.</h1>
 
   <!-- Подзаголовок -->
-  <p class="subtitle">Распродажа к <strong>Дню рождения «Архитектуры сознания»</strong> прошла с 8 по 10 мая 2026 года. Цены вернулись к обычным. Спасибо каждому, кто оформил блок или флагман, ваша поддержка <strong>важна</strong>.</p>
+  <p class="subtitle">Распродажа к <strong>Дню рождения «Архитектуры сознания»</strong> завершена. Цены вернулись к обычным. Спасибо каждому, кто оформил блок или флагман, ваша поддержка <strong>важна</strong>.</p>
 
   <!-- Разделитель -->
   <div class="divider">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
   </div>
 
-  <!-- Карточка с датой следующей распродажи -->
-  <div class="next-sale">
+  <!-- Карточка про подписку на ТГ -->
+  <a href="https://t.me/thebodymindcode" class="next-sale">
     <div class="ns-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-        <circle cx="12" cy="16" r="2" fill="currentColor"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.05 4.05l-2.91 13.71c-.22 1-.81 1.24-1.65.77l-4.56-3.36-2.2 2.12c-.24.24-.45.45-.92.45l.33-4.67 8.5-7.69c.37-.33-.08-.51-.58-.18l-10.51 6.61-4.52-1.41c-.98-.31-1-.98.21-1.45L19.7 3.18c.82-.3 1.54.19 1.35 1.07z"/></svg>
     </div>
     <div class="ns-text">
-      <div class="ns-label">Следующая распродажа</div>
-      <div class="ns-date"><span>8 мая 2027</span> · день рождения проекта</div>
+      <div class="ns-label">За следующими распродажами</div>
+      <div class="ns-date">следите в <span>Telegram-канале проекта</span></div>
     </div>
-  </div>
+    <svg class="ns-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+  </a>
 
   <!-- Кнопки -->
   <div class="btns">
@@ -179,9 +176,9 @@ h1 .gold{color:var(--gold)}
       Перейти в магазин
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
-    <a href="https://t.me/thebodymindcode" class="btn-secondary">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.05 4.05l-2.91 13.71c-.22 1-.81 1.24-1.65.77l-4.56-3.36-2.2 2.12c-.24.24-.45.45-.92.45l.33-4.67 8.5-7.69c.37-.33-.08-.51-.58-.18l-10.51 6.61-4.52-1.41c-.98-.31-1-.98.21-1.45L19.7 3.18c.82-.3 1.54.19 1.35 1.07z"/></svg>
-      Telegram-канал проекта
+    <a href="https://t.me/TheBodyMindCode_support" class="btn-secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      Связаться с поддержкой
     </a>
   </div>
 
